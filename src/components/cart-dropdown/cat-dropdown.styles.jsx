@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import CustomButton from '../custom-button/custom-button.component';
+
 
 export const CartDropDownStyle = styled.div`
     position: absolute;
@@ -26,6 +28,6 @@ export const EmptyMessage = styled.span`
     margin: 50px auto;
 `;
 
-export const CartButton = styled.button`
+export const CartButton = styled(CustomButton)`
     margin-top: auto;
 `;
