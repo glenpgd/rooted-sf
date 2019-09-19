@@ -1,5 +1,4 @@
 import ShopActionTypes from './shop.types';
-import undefined from 'firebase/empty-import';
 
 const INITIAL_STATE = {
   collections: null,
@@ -13,8 +12,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: true
-      }
-      //Once our API is successful were going to update our collections with our payload and also tell our reducer that it's no longer fetching.
+      };
     case ShopActionTypes.FETCH_COLLECTIONS_SUCCESS:
       return {
         ...state,
