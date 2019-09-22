@@ -18,11 +18,25 @@ export function* signInWithGoogle() {
     }
 }
 
+export function* signInWithEmail({payload: {email, password}}) {
+    try{
+        const {user} = yield auth.signWithPopUp(googleProvider);
+        const userRef = yield call(createUserProfileDocument, user);
+        const userSnapshot = yield userRef.get();
+        yield put(emailSignInSuccess({ id: userSnapshot.id, ...userSnapshot.data( )}))
+    } catch(error) {
+        yield put(emailSignInFailure(error))
+    }
+}
 
 export function* onGoogleSignInstart(){
-    yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START)
+    yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle)
+}
+
+export function* onEmailSignInStart() {
+    yield takeLatest(UserActionTypes.EMAIL_SIGN_IN, signInWithEmail)
 }
 
 export function* userSagas(){
-    yield all([onGoogleSignInstart])
+    yield all([call(onGoogleSignInstart), call(onEmailSignInStart)]); 
 }
