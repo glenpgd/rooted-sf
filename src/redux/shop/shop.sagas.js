@@ -1,4 +1,4 @@
-import {takeEvery, call, put} from 'redux-saga/effects';
+import {takeEvery, call, put, all} from 'redux-saga/effects';
 import {firestore, convertCollectionsSnapshotToMap} from '../../firebase/firebase.utils'
 import {
     fetchCollectionsSuccess,
@@ -29,3 +29,5 @@ export function* fetchCollectionsStart(){
         fetchCollectionsAsync 
     );
 }
+
+// export function* Sho
