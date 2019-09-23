@@ -47,7 +47,6 @@ export function* onGoogleSignInstart(){
 export function* onEmailSignInStart() {
     yield takeLatest(UserActionTypes.EMAIL_SIGN_IN, signInWithEmail)
 }
-
 export function* userSagas(){
     yield all([call(onGoogleSignInstart), call(onEmailSignInStart)]); 
 }
