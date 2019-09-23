@@ -1,9 +1,12 @@
 import {takeEvery, call, put, all} from 'redux-saga/effects';
+
 import {firestore, convertCollectionsSnapshotToMap} from '../../firebase/firebase.utils'
+
 import {
     fetchCollectionsSuccess,
     fetchCollectionsFailure
 } from './shop.actions'
+
 import ShopActionTypes from './shop.types';
 
 

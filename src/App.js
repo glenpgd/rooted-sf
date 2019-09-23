@@ -25,7 +25,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const {checkUserSession}= this.props;
+    const {checkUserSession} = this.props;
   }
 
   componentWillUnmount() {
@@ -69,4 +69,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

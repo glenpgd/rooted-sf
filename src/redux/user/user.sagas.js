@@ -7,6 +7,8 @@ import {
     signInFailure,
     signOutSuccess,
     signOutFailure,
+    signUpSuccess,
+    signUpFailure,
 } from './user.actions';
 
 import { 
@@ -38,6 +40,16 @@ export function * signOut(){
        yield put(signOutFailure(error))
    }
 }
+
+export function * signUp(){
+    try{
+        yield auth.sigUp();
+        yield (put(signUpSuccess))
+    } 
+    catch(error){
+        yield put(signUpFailure(error))
+    }
+ }
 
 //SIGN IN
 export function* signInWithGoogle() {
@@ -91,6 +103,11 @@ export function* onSignOutStart() {
     yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut)
 }
 
+//SIGN UP
+export function* onSignUpStart() {
+    yield takeLatest(UserActionTypes.SIGN_UP_START, signUp)
+}
+
 
 //SAGAS
 export function* userSagas(){
@@ -98,7 +115,8 @@ export function* userSagas(){
         call(onGoogleSignInstart), 
         call(onEmailSignInStart), 
         call(isUserAuthenticated),
-        call(onSignOutStart)
+        call(onSignOutStart),
+        call(onSignUpStart)
     ]) 
 }
 
