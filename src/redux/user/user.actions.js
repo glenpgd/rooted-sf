@@ -42,12 +42,14 @@ export const signOutFailure = (error) => ({
 })
 
 //SIGN UP
-export const signUpStart = () => ({
-  type: UserActionTypes.SIGN_UP_START
+export const signUpStart = (userCredentials) => ({
+  type: UserActionTypes.SIGN_UP_START,
+  payload: userCredentials
 })
 
-export const signUpSuccess = () => ({
-  type: UserActionTypes.SIGN_UP_SUCCESS
+export const signUpSuccess = ({user, additionalData}) => ({
+  type: UserActionTypes.SIGN_UP_SUCCESS,
+  payload: {user, additionalData}
 })
 
 export const signUpFailure = (error) => ({
