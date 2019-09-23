@@ -23,11 +23,10 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
   })
 
 
-
+  const { email, password } = userCredentials;
   const handleSubmit = async event => {
     event.preventDefault();
-    const { email, password } = userCredentials;
-    
+  
     emailSignInStart(email, password);
   };
 
@@ -38,7 +37,7 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
   };
 
  
-    return (
+  return (
       <SignInContainer>
         <SignInTitle>I already have an account</SignInTitle>
         <span>Sign in with your email and password</span>
@@ -48,14 +47,14 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
             name='email'
             type='email'
             handleChange={handleChange}
-            value={this.state.email}
+            value={email}
             label='email'
             required
           />
           <FormInput
             name='password'
             type='password'
-            value={this.state.password}
+            value={password}
             handleChange={handleChange}
             label='password'
             required
@@ -72,8 +71,9 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
           </ButtonsBarContainer>
         </form>
       </SignInContainer>
-    );
-  }
+  );
+
+}
 
 const mapDispatchToProps = dispatch => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
