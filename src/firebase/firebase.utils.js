@@ -1,29 +1,29 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-// import { resolve } from '';
 
 const config = {
-  apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
-  authDomain: 'crwn-db.firebaseapp.com',
-  databaseURL: 'https://crwn-db.firebaseio.com',
-  projectId: 'crwn-db',
-  storageBucket: 'crwn-db.appspot.com',
-  messagingSenderId: '850995411664',
-  appId: '1:850995411664:web:7ddc01d597846f65'
+  apiKey: "AIzaSyBru1PuSBgHtq8KayXlv2rew-aYUFooS00",
+  authDomain: "rooted-sf-db.firebaseapp.com",
+  databaseURL: "https://rooted-sf-db.firebaseio.com",
+  projectId: "rooted-sf-db",
+  storageBucket: "rooted-sf-db.appspot.com",
+  messagingSenderId: "303246618521",
+  appId: "1:303246618521:web:80dcefa977370173a92d08"
 };
 
 firebase.initializeApp(config);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
+
   const userRef = firestore.doc(`users/${userAuth.uid}`);
+
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-    
     try {
       await userRef.set({
         displayName,
@@ -31,8 +31,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         createdAt,
         ...additionalData
       });
-    } 
-    catch (error) {
+    } catch (error) {
       console.log('error creating user', error.message);
     }
   }
@@ -78,9 +77,9 @@ export const getCurrentUser = () => {
     const unsubscribe = auth.onAuthStateChanged(userAuth => {
       unsubscribe();
       resolve(userAuth);
-    }, reject)
-  })
-}
+    }, reject);
+  });
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

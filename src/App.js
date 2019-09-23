@@ -1,31 +1,26 @@
-//React-DOM and Redux
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {createStructuredSelector} from 'reselect';
-import {selectCollectionsForPreview} from './redux/shop/shop.selectors'
+import { createStructuredSelector } from 'reselect';
 
-//SASS
 import './App.css';
 
-//Pages
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 
-//Header
 import Header from './components/header/header.component';
 
-//Users
 import { selectCurrentUser } from './redux/user/user.selectors';
-import {checkUserSession} from './redux/user/user.actions';
+import { checkUserSession } from './redux/user/user.actions';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const {checkUserSession} = this.props;
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
 
   componentWillUnmount() {
@@ -40,7 +35,6 @@ class App extends React.Component {
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
-
           <Route
             exact
             path='/signin'
@@ -59,14 +53,14 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  collectionsArray: selectCollectionsForPreview
-
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession())
-})
+});
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
