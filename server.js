@@ -5,6 +5,10 @@ const path = require('path');
 
 if(process.env.NODE.ENV !== 'production') require('dotnev').config();
 
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+
 const app = expres();
 const port = process.env.PORT || 5000;
 
@@ -18,7 +22,6 @@ app.use(cors());
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client/build')));
-
 
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
@@ -36,4 +39,13 @@ app.post('/payment', (req, res){
         amount: req.body.amount,
         currensy: 'usd'
     }
+
+    stripe.charges.create(body, (stripeErr, stripeRes) => {
+        if(stripeErr) {
+           res.status(500).send({ error: stripeErr}) 
+        }
+        else {
+            res.status(200).send({success: stripeRes})
+        }
+    })
 })
