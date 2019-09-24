@@ -1,5 +1,5 @@
 {
-    "name": "root-sf-server",
+    "name": "rooted-sf-server",
     "version": "1.0.0",
     "engines": {
         "node": "12.9.1",

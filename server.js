@@ -3,13 +3,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-if(process.env.NODE.ENV !== 'production') require('dotnev').config();
+if(process.env.NODE.ENV !== 'production') require('dotenv').config();
 
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
-const app = expres();
+const app = express();
 const port = process.env.PORT || 5000;
 
 //Convert requests to json
@@ -33,7 +33,7 @@ app.listen(port, error => {
     console.log('Server running on port' + port)
 })
 
-app.post('/payment', (req, res){
+app.post('/payment', (req, res) => {
     const body = {
         source: req.body.token.id,
         amount: req.body.amount,
