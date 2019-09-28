@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import Spinner from './components/spinner/spinner.component.jsx';
+
 import {GlobalStyle} from './global.styles';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -16,6 +18,7 @@ const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'))
 const Header = lazy(() => import('./components/header/header.component'))
 
 
+
 const App = ({ checkUserSession, currentUser }) => {
     useEffect(() => {
       checkUserSession()
@@ -27,7 +30,7 @@ const App = ({ checkUserSession, currentUser }) => {
         <GlobalStyle />
         <Header />
         <Switch>
-        <Suspense fallback={<div>...Loading</div>}>
+        <Suspense fallback={<Spinner />}>
           <Route exact path='/' component={HomePage} />
           
           <Route path='/shop' component={ShopPage} />
