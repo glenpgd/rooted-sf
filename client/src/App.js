@@ -23,8 +23,7 @@ const App = ({ checkUserSession, currentUser }) => {
     useEffect(() => {
       checkUserSession()
     }, [checkUserSession])
-
-
+   
     return (
       <div>
         <GlobalStyle />
@@ -47,7 +46,6 @@ const App = ({ checkUserSession, currentUser }) => {
             }
           />
           </Suspense>
-
         </Switch>
       </div>
     );
