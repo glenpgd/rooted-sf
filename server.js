@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 //Helps keep urls strict
 app.use(bodyParser.urlencoded({extended: true}));
 
-//Cross Origin Request (Allows to prperly make requests to abcnk end from local 3000)
+//Cross Origin Request (Allows to properly make requests to the backend from local 3000)
 app.use(cors());
 
 if(process.env.NODE_ENV === 'production') {
