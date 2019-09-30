@@ -1,6 +1,3 @@
-# Lesson-32
-We have added some media query styles to our styled components, try as an exercise to convert the appropriate pages to be mobile responsive!
-
 # How to fork and clone
 
 One quick note about cloning this project. If you wish to make commits and push the code up after cloning this repo, you should fork the project first. In order to own your own copy of this repository, you have to fork it so you get your own copy on your own profile!
