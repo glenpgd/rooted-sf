@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const http = require('http');
+// const http = require('http');
 const enforce = require('express-sslify')
 if(process.env.NODE.ENV !== 'production') require('dotenv').config();
 
@@ -20,9 +20,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(enforce.HTTPS({ trustAzureHeader: true }));
 
-http.createServer(app).listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
-});
+// http.createServer(app).listen(app.get('port'), function() {
+//   console.log('Express server listening on port ' + app.get('port'));
+// });
 
 app.get('/service-worker.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js')); 
