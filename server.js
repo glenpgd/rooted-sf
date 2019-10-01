@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+const enforce = require('express-sslify');
 if(process.env.NODE.ENV !== 'production') require('dotenv').config();
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 //Helps keep urls strict
 app.use(bodyParser.urlencoded({extended: true}));
 //Cross Origin Request (Allows to properly make requests to the backend from local 3000)
+app.use(enforce(HTTPS({trustProtoHeader: true})));
 app.use(cors());
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client/build')));
