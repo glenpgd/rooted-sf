@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 // const http = require('http');
-// const enforce = require('express-sslify')
+const enforce = require('express-sslify')
 
 if(process.env.NODE.ENV !== 'production') require('dotenv').config();
 
