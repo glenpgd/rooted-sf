@@ -1,5 +1,4 @@
-# Lesson-32
-We have added some media query styles to our styled components, try as an exercise to convert the appropriate pages to be mobile responsive!
+#Rooted-SF
 
 # How to fork and clone
 
