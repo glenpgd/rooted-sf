@@ -46,7 +46,6 @@ Remember to add a file called `.env` to the root folder! In that `.env` file rem
 
 ![alt text](https://i.ibb.co/wpLx8Lh/Screen-Shot-2019-07-01-at-2-26-26-AM.png "image to secret key")
 
-You will also need to connect your existing Heroku app to this new forked and cloned repo, or you have to create a new Heroku app and push to it. A quick refresher on how to do either of these:
 
 
 
