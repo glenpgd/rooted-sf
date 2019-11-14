@@ -1,5 +1,15 @@
 #Rooted-SF
 
+# App Architecture
+Rooted-Sf is a project to showcase different architectural approaches to developing an e-commerce. It is built as a template to other e-commerce applications, that might need a high level of architecture using reusable components.
+
+The app in this project aims to be simple enough that you can use it intuatively, but complex enough to showcase difficult design decisions including state management tools like redux and also testing scenarios. 
+
+# Trade-offs
+Some of the Trade-offs we're based on the database choice and Oath options, which I used FirebaseDB and FireBase Oath, in order to keep the code less verbose, and also to try a new library.
+
+
+
 # How to fork and clone
 
 One quick note about cloning this project. If you wish to make commits and push the code up after cloning this repo, you should fork the project first. In order to own your own copy of this repository, you have to fork it so you get your own copy on your own profile!
