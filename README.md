@@ -1,5 +1,5 @@
 #Rooted-SF
-
+<img width="1218" alt="Screen Shot 2019-11-14 at 12 25 11 PM" src="https://user-images.githubusercontent.com/24828685/68885138-2dd82a80-06da-11ea-8ff9-34ee521e0b57.png">
 # App Architecture
 Rooted-Sf is a project to showcase different architectural approaches to developing an e-commerce. It is built as a template to other e-commerce applications, that might need a high level of architecture using reusable components.
 
